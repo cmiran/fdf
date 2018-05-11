@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 15:32:18 by cmiran            #+#    #+#             */
-/*   Updated: 2018/05/10 15:28:22 by cmiran           ###   ########.fr       */
+/*   Updated: 2018/05/11 16:15:25 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ typedef struct s_point
 }	t_point;
 
 int	kill(char *str);
-int	pull_map(int fd);
+void	check_map(int fd, int *nb_x, int *nb_y);
 
 #endif
