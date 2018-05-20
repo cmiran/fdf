@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/02 14:23:35 by cmiran            #+#    #+#             */
-/*   Updated: 2018/05/13 17:59:14 by cmiran           ###   ########.fr       */
+/*   Updated: 2018/05/20 15:06:16 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,13 @@ int	kill(char *str)
 
 int	main(int argc, char **argv)
 {
-	int	fd;
-	int	nb_x;
-	int	nb_y;
+	t_map	*map;
 
-	if (argc < 2)
+	if (argc == 2)
+	{
+		
+	}
+	else	
 		kill("Usage : ./fdf <filename>");
 	if ((fd = open(argv[1], O_RDONLY)) == -1)
 		kill("Error : corrupted map");

@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 15:57:46 by cmiran            #+#    #+#             */
-/*   Updated: 2018/05/13 18:08:26 by cmiran           ###   ########.fr       */
+/*   Updated: 2018/05/20 15:06:23 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,14 +76,14 @@ void	check_line(char *line, int *nb_x)
 		kill("Error : map is not a square or a rectangle");
 }
 
-void 	check_map(const int fd, int *nb_x, int *nb_y)
+void 	check_map()
 {
-	char				*line;
+	int	fd;
 
-	*nb_y = 0;
+	if ((fd = open(argv[1], O_RDONLY)) == -1)
+		kill("Error : corrupted map");
 	while (get_next_line(fd, &line) != 0)
 	{
 		check_line(line, nb_x);
-		*nb_y += 1;
 	}
 }
