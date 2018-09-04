@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 15:57:46 by cmiran            #+#    #+#             */
-/*   Updated: 2018/05/21 18:50:46 by cmiran           ###   ########.fr       */
+/*   Updated: 2018/09/04 18:53:44 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,14 @@ void	check_map(char *argv, int *nb_x, int *nb_y)
 		if (!*nb_x)
 			*nb_x = line_len(line);
 		else if (*nb_x != line_len(line))
+		{
+//			free(line);
 			kill("Error : map is not a square or a rectangle");
+		}
 		*nb_y += 1;
 	}
 	close(fd);
+//	free(line);
 }
 
 void	get_map(char *argv/*, t_map *map*/)
@@ -94,5 +98,6 @@ void	get_map(char *argv/*, t_map *map*/)
 	int	nb_y;
 	
 	check_map(argv, &nb_x, &nb_y);
+//	pull_map(argv, nb_x, nb_y);
 	printf("nb_x : %d  -  nb_y : %d\n", nb_x, nb_y);
 }
