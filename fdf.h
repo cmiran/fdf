@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 15:32:18 by cmiran            #+#    #+#             */
-/*   Updated: 2018/05/21 18:09:49 by cmiran           ###   ########.fr       */
+/*   Updated: 2018/09/04 19:04:40 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,19 @@ typedef struct s_point
 	int	color;
 }	t_point;
 
+/*
 typedef struct	s_line
 {
 	t_point	*points;
-	int	len;
+	int	nb_x;
 }	t_line;
 
 typedef struct	s_map
 {
 	t_line	*lines;
-	int	len;
+	int	nb_y;
 }	t_map;
+*/
 
 int	kill(char *str);
 void	get_map(char *argv/*, t_map *map*/);
