@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 15:57:46 by cmiran            #+#    #+#             */
-/*   Updated: 2018/05/13 18:08:26 by cmiran           ###   ########.fr       */
+/*   Updated: 2018/05/21 18:50:46 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ int		line_len(char *line)
 	return (len);
 }
 
-void	check_point(char *line)
+void	check_line(char *line)
 {
 	int	i;
 	int j;
-	
-	i = 0;
-	while (line[i])
+
+	i = -1;
+	while (line[++i])
 	{
 		if (line[i] == ',')
 		{
@@ -49,41 +49,50 @@ void	check_point(char *line)
 			else
 				i += 3;
 			j = 1;
-			while (line[i] != ' ')
+			while (line[i] != ' ' && line[i])
 			{
-				if (!ft_isxdigit(line[i]) && (j > 6 || j % 2 != 0))
+				if (!ft_isxdigit(line[i]) || j > 6 || (line[i + 1] == ' ' && j % 2 != 0))
 					kill("Error : a color is not well formated");
 				i++;
 				j++;
 			}
 		}
-		if (!ft_isdigit(line[i]) && line[i] != ' ')
+		if (line[i] == '\0')
+			break;
+		if ((line[i] == '-' || line[i] == '+') && !ft_isdigit(line[i + 1]))
+			kill("Error : a point is not well formated");
+		if (line[i] != '-' && line[i] != '+'  && line[i] != ' '
+				&& !ft_isdigit(line[i]))
 			kill("Error : map contains a forbidden character");
-		i++;
 	}
 }
 
-void	check_line(char *line, int *nb_x)
+void	check_map(char *argv, int *nb_x, int *nb_y)
 {
-	printf("%s\n", line);
-	if (!ft_isdigit(line[0]) || !ft_isxdigit(line[ft_strlen(line) - 1]))
-		kill("Error : map is not well formated or contains a forbidden character");
-	else
-		check_point(line);
-	if (!*nb_x)
-		*nb_x = line_len(line);
-	else if (*nb_x != line_len(line))
-		kill("Error : map is not a square or a rectangle");
-}
+	int		fd;
+	char	*line;
 
-void 	check_map(const int fd, int *nb_x, int *nb_y)
-{
-	char				*line;
-
+	if ((fd = open(argv, O_RDONLY)) == -1)
+		kill("Error : corrupted map");
+	*nb_x = 0;
 	*nb_y = 0;
 	while (get_next_line(fd, &line) != 0)
 	{
-		check_line(line, nb_x);
+		check_line(line);
+		if (!*nb_x)
+			*nb_x = line_len(line);
+		else if (*nb_x != line_len(line))
+			kill("Error : map is not a square or a rectangle");
 		*nb_y += 1;
 	}
+	close(fd);
+}
+
+void	get_map(char *argv/*, t_map *map*/)
+{
+	int	nb_x;
+	int	nb_y;
+	
+	check_map(argv, &nb_x, &nb_y);
+	printf("nb_x : %d  -  nb_y : %d\n", nb_x, nb_y);
 }
