@@ -6,26 +6,36 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/04 16:05:36 by cmiran            #+#    #+#             */
-/*   Updated: 2018/09/04 19:04:22 by cmiran           ###   ########.fr       */
+/*   Updated: 2018/09/05 10:32:08 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_point	*pull_points(*line, nb_x)
+void	freekill(char *line, char *str)
+{
+	free(line);
+	kill(str);
+}
+
+t_point	*pull_points(char *line, int nb_x)
 {
 	t_point *point;
+	char		**str;
 	int			i;
+	int			j;
 
 	if (!(point = (t_point *)malloc(sizeof(t_point) * nb_x)))
+		freekill(line, "Error : a memory allocation has failed");
+	if (!(str = ft_strsplit(line, ' ')))
+		freekill(line, "Error : a memory allocation has failed");
+	i = -1;
+	j = -1;
+	while (str[++i])
 	{
-		free(&line);
-		kill("Error : a memory allocation has failed");
-	}
-	i = 0;
-	while (line[i])
-	{
-		
+		while (str[++j])
+		{
+			point-
 	
 }
 
