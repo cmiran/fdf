@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/04 16:05:36 by cmiran            #+#    #+#             */
-/*   Updated: 2018/09/05 10:32:08 by cmiran           ###   ########.fr       */
+/*   Updated: 2018/09/05 17:27:05 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,10 @@ t_point	*pull_points(char *line, int nb_x)
 	{
 		while (str[++j])
 		{
-			point-
-	
+			point->x = j;
+			point->y = i;
+			point->z = ft_atoi(ft_strcdup(str, ',');
+		}
 }
 
 t_point	**pull_map(char *argv, int nb_x, int nb_y)
