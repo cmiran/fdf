@@ -6,11 +6,11 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 15:57:46 by cmiran            #+#    #+#             */
-/*   Updated: 2018/09/04 18:53:44 by cmiran           ###   ########.fr       */
+/*   Updated: 2018/09/06 19:28:51 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "includes/fdf.h"
 
 int		line_len(char *line)
 {
@@ -37,7 +37,7 @@ int		line_len(char *line)
 void	check_line(char *line)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = -1;
 	while (line[++i])
@@ -74,8 +74,8 @@ void	check_map(char *argv, int *nb_x, int *nb_y)
 
 	if ((fd = open(argv, O_RDONLY)) == -1)
 		kill("Error : corrupted map");
-	*nb_x = 0;
-	*nb_y = 0;
+//	*nb_x = 0;
+//	*nb_y = 0;
 	while (get_next_line(fd, &line) != 0)
 	{
 		check_line(line);
@@ -83,21 +83,25 @@ void	check_map(char *argv, int *nb_x, int *nb_y)
 			*nb_x = line_len(line);
 		else if (*nb_x != line_len(line))
 		{
-//			free(line);
+			free(line);
 			kill("Error : map is not a square or a rectangle");
 		}
 		*nb_y += 1;
 	}
 	close(fd);
-//	free(line);
+	free(line);
 }
 
-void	get_map(char *argv/*, t_map *map*/)
+t_point	**get_map(char *argv)
 {
 	int	nb_x;
 	int	nb_y;
-	
+	t_point	**map;
+
+	nb_x = 0;
+	nb_y = 0;
 	check_map(argv, &nb_x, &nb_y);
-//	pull_map(argv, nb_x, nb_y);
-	printf("nb_x : %d  -  nb_y : %d\n", nb_x, nb_y);
+	map = pull_map(argv, nb_x, nb_y);
+//	printf("nb_x : %d  -  nb_y : %d\n", nb_x, nb_y);
+	return (map);
 }
