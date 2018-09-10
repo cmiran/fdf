@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/02 14:23:35 by cmiran            #+#    #+#             */
-/*   Updated: 2018/09/06 19:34:29 by cmiran           ###   ########.fr       */
+/*   Updated: 2018/09/10 17:44:14 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 		kill("Usage : ./fdf <filename>");
 	i = 0;
 	j = 0;
-	while (map[i])
+/*	while (map[i])
 	{
 		while (map[j])
 		{
@@ -44,6 +44,6 @@ int	main(int argc, char **argv)
 			j++;
 		}
 		i++;
-	}
+	}*/
 	exit(EXIT_SUCCESS);
 }

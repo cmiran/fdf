@@ -6,14 +6,14 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 15:32:18 by cmiran            #+#    #+#             */
-/*   Updated: 2018/09/06 19:28:29 by cmiran           ###   ########.fr       */
+/*   Updated: 2018/09/10 16:14:57 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# include "../libft/libft.h"
+# include "../libft/includes/libft.h"
 
 typedef struct s_point
 {
