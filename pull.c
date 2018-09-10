@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/04 16:05:36 by cmiran            #+#    #+#             */
-/*   Updated: 2018/09/06 20:11:28 by cmiran           ###   ########.fr       */
+/*   Updated: 2018/09/10 14:35:52 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,10 @@ t_point	**pull_map(char *argv, int nb_x, int nb_y)
 	fd = open(argv, O_RDONLY);
 	i = -1;
 	while (get_next_line(fd, &line) != 0)
+	{
 		map[++i] = pull_points(line, nb_x, &i);
-	free(line);
+		free(line);
+	}
 	close(fd);
 	return (map);
 }
