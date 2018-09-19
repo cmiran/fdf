@@ -6,17 +6,11 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/02 14:23:35 by cmiran            #+#    #+#             */
-/*   Updated: 2018/09/19 19:48:33 by cmiran           ###   ########.fr       */
+/*   Updated: 2018/09/19 21:28:11 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/fdf.h"
-
-int		kill(char *str)
-{
-	ft_putendl(str);
-	exit(EXIT_FAILURE);
-}
 
 void	init_env(t_env *env, char *title)
 {
@@ -38,7 +32,7 @@ int		main(int argc, char **argv)
 		env.map = get_map(argv[1], &env);
 	else
 		kill("Usage : ./fdf <filename>");
-	mlx_loop(env.win_ptr);
+	mlx_loop(env.mlx_ptr);
 /*	int i = 0;
 	while (i < env.nb_y)
 	{

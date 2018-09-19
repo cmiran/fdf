@@ -6,17 +6,11 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/04 16:05:36 by cmiran            #+#    #+#             */
-/*   Updated: 2018/09/19 19:53:17 by cmiran           ###   ########.fr       */
+/*   Updated: 2018/09/19 21:28:19 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/fdf.h"
-
-void	freekill(char *line, char *str)
-{
-	free(line);
-	kill(str);
-}
 
 t_point	*pull_points(char *line, int nb_x, int *i)
 {
