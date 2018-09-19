@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 15:57:46 by cmiran            #+#    #+#             */
-/*   Updated: 2018/09/19 19:14:51 by cmiran           ###   ########.fr       */
+/*   Updated: 2018/09/19 19:51:56 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ int		line_len(char *line)
 	while (line[i])
 	{
 		if (ft_isdigit(line[i]))
- 		{
+		{
 			len++;
 			while (ft_isgraph(line[i]) && line[i])
 				i++;
 		}
 		if (line[i] == '\0')
-			break;
+			break ;
 		i++;
 	}
 	return (len);
@@ -58,11 +58,10 @@ void	check_line(char *line)
 			}
 		}
 		if (line[i] == '\0')
-			break;
+			break ;
 		if ((line[i] == '-' || line[i] == '+') && !ft_isdigit(line[i + 1]))
 			kill("Error : a point is not well formated");
-		if (line[i] != '-' && line[i] != '+'  && line[i] != ' '
-				&& !ft_isdigit(line[i]))
+		if (line[i] != '-' && line[i] != '+' && line[i] != ' ' && !ft_isdigit(line[i]))
 			kill("Error : map contains a forbidden character");
 	}
 }

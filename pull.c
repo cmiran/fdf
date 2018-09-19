@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/04 16:05:36 by cmiran            #+#    #+#             */
-/*   Updated: 2018/09/19 19:14:53 by cmiran           ###   ########.fr       */
+/*   Updated: 2018/09/19 19:53:17 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,18 @@ t_point	*pull_points(char *line, int nb_x, int *i)
 	t_point *point;
 	char	**str;
 	int		j;
-	
+
 	str = NULL;
 	if (!(point = (t_point *)malloc(sizeof(t_point) * nb_x)) || !(str = ft_strsplit(line, ' ')))
 		freekill(line, "Error : a memory allocation has failed");
 	j = -1;
 	while (str[++j])
-	{	
+	{
 		point[j].x = *i;
 		point[j].y = j;
 		if (ft_strchr(str[j], ','))
 		{
-			point[j].z = ft_atoi(ft_strcdup(str[j], ',')); 
+			point[j].z = ft_atoi(ft_strcdup(str[j], ','));
 			point[j].color = ft_atoi_base(ft_dupcstr(str[j], 'x'), 16);
 		}
 		else
@@ -50,8 +50,8 @@ t_point	*pull_points(char *line, int nb_x, int *i)
 t_point	**pull_map(char *argv, int nb_x, int nb_y)
 {
 	t_point	**map;
-	int 	fd;
-	int		i;	
+	int		fd;
+	int		i;
 	char	*line;
 
 	if (!(map = (t_point **)malloc(sizeof(t_point *) * nb_y)))

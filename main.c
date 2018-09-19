@@ -6,40 +6,39 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/02 14:23:35 by cmiran            #+#    #+#             */
-/*   Updated: 2018/09/19 19:14:49 by cmiran           ###   ########.fr       */
+/*   Updated: 2018/09/19 19:48:33 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/fdf.h"
 
-int	kill(char *str)
+int		kill(char *str)
 {
 	ft_putendl(str);
 	exit(EXIT_FAILURE);
 }
 
-void	init_env(t_env *env)
+void	init_env(t_env *env, char *title)
 {
 	env->nb_x = 0;
 	env->nb_y = 0;
 	env->map = NULL;
-/*	if (!(env->mlx_id = mlx_init(void)))
+	if (!(env->mlx_ptr = mlx_init()))
 		kill("Error : mlx failed to initialize");
-	if (!(env->win_id = mlx_new_window(env->mlx_id, 1200, 720, argv[1])))
-		kill("Error : mlx failed to create a new window");*/
-	env->mlx_id = NULL;
-	env->win_id = NULL;
+	if (!(env->win_ptr = mlx_new_window(env->mlx_ptr, 1200, 720, title)))
+		kill("Error : mlx failed to create a new window");
 }
 
-int	main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
 	t_env	env;
 
-	init_env(&env);
+	init_env(&env, argv[1]);
 	if (argc > 1)
 		env.map = get_map(argv[1], &env);
-	else	
+	else
 		kill("Usage : ./fdf <filename>");
+	mlx_loop(env.win_ptr);
 /*	int i = 0;
 	while (i < env.nb_y)
 	{
