@@ -6,34 +6,36 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/02 14:23:35 by cmiran            #+#    #+#             */
-/*   Updated: 2018/09/19 21:28:11 by cmiran           ###   ########.fr       */
+/*   Updated: 2018/09/20 10:50:22 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/fdf.h"
 
-void	init_env(t_env *env, char *title)
+void	init_env(t_env *env/*, char *title*/)
 {
 	env->nb_x = 0;
 	env->nb_y = 0;
 	env->map = NULL;
-	if (!(env->mlx_ptr = mlx_init()))
+/*	if (!(env->mlx_ptr = mlx_init()))
 		kill("Error : mlx failed to initialize");
 	if (!(env->win_ptr = mlx_new_window(env->mlx_ptr, 1200, 720, title)))
-		kill("Error : mlx failed to create a new window");
+		kill("Error : mlx failed to create a new window");*/
+	env->mlx_ptr = NULL;
+	env->win_ptr = NULL;
 }
 
 int		main(int argc, char **argv)
 {
 	t_env	env;
 
-	init_env(&env, argv[1]);
+	init_env(&env/*, argv[1]*/);
 	if (argc > 1)
 		env.map = get_map(argv[1], &env);
 	else
 		kill("Usage : ./fdf <filename>");
-	mlx_loop(env.mlx_ptr);
-/*	int i = 0;
+//	mlx_loop(env.mlx_ptr);
+	int i = 0;
 	while (i < env.nb_y)
 	{
 		int j = 0;
@@ -47,6 +49,6 @@ int		main(int argc, char **argv)
 		}
 		i++;
 	}
-	printf("nb_x : %d\nnb_y : %d\n", env.nb_x, env.nb_y);*/
+	printf("nb_x : %d\nnb_y : %d\n", env.nb_x, env.nb_y);
 	exit(EXIT_SUCCESS);
 }

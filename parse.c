@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 15:57:46 by cmiran            #+#    #+#             */
-/*   Updated: 2018/09/20 02:27:21 by cmiran           ###   ########.fr       */
+/*   Updated: 2018/09/20 11:27:19 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	check_map(char *argv, t_env *env)
 		if (!check_line1(line))
 		{
 			close(fd);
-			freekill(line, "Error : map is not well formated ");
+			freekill(line, "Error : map is not well formated");
 		}
 
 		if (!env->nb_x)

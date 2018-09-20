@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/04 16:05:36 by cmiran            #+#    #+#             */
-/*   Updated: 2018/09/20 02:30:51 by cmiran           ###   ########.fr       */
+/*   Updated: 2018/09/20 11:27:46 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_point	*pull_points(char *line, int nb_x, int *i)
 
 	str = NULL;
 	if (!(point = (t_point *)malloc(sizeof(t_point) * nb_x)) || !(str = ft_strsplit(line, ' ')))
-	return (0);
+		return (0);
 	j = -1;
 	while (str[++j])
 	{
