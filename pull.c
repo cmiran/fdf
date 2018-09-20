@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/04 16:05:36 by cmiran            #+#    #+#             */
-/*   Updated: 2018/09/19 21:28:19 by cmiran           ###   ########.fr       */
+/*   Updated: 2018/09/20 02:30:51 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_point	*pull_points(char *line, int nb_x, int *i)
 
 	str = NULL;
 	if (!(point = (t_point *)malloc(sizeof(t_point) * nb_x)) || !(str = ft_strsplit(line, ' ')))
-		freekill(line, "Error : a memory allocation has failed");
+	return (0);
 	j = -1;
 	while (str[++j])
 	{
@@ -54,7 +54,11 @@ t_point	**pull_map(char *argv, int nb_x, int nb_y)
 	i = 0;
 	while (get_next_line(fd, &line) != 0)
 	{
-		map[i] = pull_points(line, nb_x, &i);
+		if (!(map[i] = pull_points(line, nb_x, &i)))
+		{
+			close(fd);
+			freekill(line, "Error : a memory allocation has failed");
+		}
 		free(line);
 		i++;
 	}
