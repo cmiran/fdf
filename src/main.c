@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/02 14:23:35 by cmiran            #+#    #+#             */
-/*   Updated: 2018/09/27 12:52:10 by cmiran           ###   ########.fr       */
+/*   Updated: 2018/09/27 14:42:46 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,20 +43,5 @@ int		main(int argc, char **argv)
 	}
 	else
 		kill("Usage : ./fdf <filename>");
-/*	int i = 0;
-	while (i < e.nb_y)
-	{
-		int j = 0;
-		while (j < e.nb_x)
-		{
-			printf("-\nx = %d\n", e.map[i][j].x);
-			printf("y = %d\n", e.map[i][j].y);
-			printf("z = %d\n", e.map[i][j].z);
-			printf("color = %d\n-\n", e.map[i][j].color);
-			j++;
-		}
-		i++;
-	}
-	printf("nb_x : %d\nnb_y : %d\n", e.nb_x, e.nb_y);*/
 	exit(EXIT_SUCCESS);
 }

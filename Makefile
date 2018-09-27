@@ -1,62 +1,59 @@
-
+# **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/09/26 19:39:07 by cmiran            #+#    #+#              #
-#    Updated: 2018/09/27 12:27:09 by cmiran           ###   ########.fr        #
+#    Created: 2018/09/27 15:12:11 by cmiran            #+#    #+#              #
+#    Updated: 2018/09/27 15:44:35 by cmiran           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC=		gcc
-CFLAGS=		-Wall -Werror -Wextra
-NAME=		fdf
+SRC_DIR = ./src/
+OBJ_DIR = ./obj/
+INC_DIR = ./include/\
+	  /usr/X11/inc\
+	  ./libft/includes/
 
+NAME = fdf
 
-LIB_DIR=	./libft
-LIB=		./libft/libft.a
-LIB_LINK=	 -L $(LIB_DIR) -lft -L $(MLX_DIR)/lib -lmlx
+CC = gcc -g
+CFLAGS = -Wall -Wextra -Werror
 
-MLX_DIR=	/usr/X11/
+SRC_NAME = main.c\
+	   parse.c\
+	   populate.c\
+	   draw.c\
+	   key.c\
+	   error.c
 
-INC_DIR=	./include
-INCS=		 -I $(INC_DIR) -I $(LIB_DIR) -I $(MLX_DIR)/include
+SRC = $(addprefix $(SRC_DIR), $(SRC_NAME))
+OBJ = $(addprefix $(OBJ_DIR), $(SRC_NAME:.c=.o))
+INC = $(addprefix -I, $(INC_DIR))
 
-SRC_DIR=	./src
-SRC=		main.c\
-		parse.c\
-		populate.c\
-		draw.c\
-		key.c\
-		error.c
-
-OBJ_DIR=	./obj
-OBJS=		$(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
+LIB = -L /usr/X11/lib -L ./libft -lft -lmlx
 
 all: $(NAME)
 
-$(NAME): obj $(LIB) $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(LIB_LINK) -o $@ -framework OpenGL -framework AppKit
+$(NAME): obj $(OBJ)
+	make -C ./libft
+	$(CC) $(CFLAGS) $(OBJ) $(LIB) -o $@ -framework OpenGL -framework AppKit
 
 obj:
-	mkdir -p obj
+	mkdir obj
 
-$(LIB):
-	make -C ./libft
-
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	$(CC) $(CFLAGS) -o $@ -c $< $(INCS)
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+	$(CC) $(CFLAGS) -o $@ -c $< $(INC)
 
 clean:
 	make clean -C ./libft
-	rm -f $(OBJS)
+	rm -f $(OBJ)
 	rm -rf $(OBJ_DIR)
 
 fclean: clean
-	@make fclean -C ./libft
-	@rm -f $(NAME)
+	make fclean -C ./libft
+	rm -f $(NAME)
 
 re: fclean all
 
