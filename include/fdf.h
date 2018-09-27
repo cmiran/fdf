@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 15:32:18 by cmiran            #+#    #+#             */
-/*   Updated: 2018/09/27 13:15:03 by cmiran           ###   ########.fr       */
+/*   Updated: 2018/09/27 13:21:44 by cmiran           ###   ########.fr       */
 /*   Updated: 2018/09/19 21:28:28 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -28,19 +28,19 @@ typedef struct	s_env
 {
 	int	nx;
 	int	ny;
-	int	xmove;
-	int	ymove;
-	int	scale;
-	double	z;
 	t_point	**map;
-	double		x;
-	double		y;
-	double		x0;
-	double		x1;
-	double		y0;
-	double	y1;
 	void	*mlx;
 	void	*win;
+	int	scale;
+	int	xmove;
+	int	ymove;
+	double	z;
+	double	x;
+	double	y;
+	double	x0;
+	double	x1;
+	double	y0;
+	double	y1;
 }		t_env;
 
 int		kill(char *str);
