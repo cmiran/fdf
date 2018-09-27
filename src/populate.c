@@ -1,60 +1,58 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pull.c                                             :+:      :+:    :+:   */
+/*   populate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/04 16:05:36 by cmiran            #+#    #+#             */
-/*   Updated: 2018/09/20 11:27:46 by cmiran           ###   ########.fr       */
+/*   Updated: 2018/09/27 12:56:04 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/fdf.h"
+#include "fdf.h"
 
-t_point	*pull_points(char *line, int nb_x, int *i)
+t_point	*pull_points(char *line, int nx)
 {
 	t_point *point;
 	char	**str;
-	int		j;
+	int		i;
 
 	str = NULL;
-	if (!(point = (t_point *)malloc(sizeof(t_point) * nb_x)) || !(str = ft_strsplit(line, ' ')))
+	if (!(point = (t_point *)malloc(sizeof(t_point) * nx)) || !(str = ft_strsplit(line, ' ')))
 		return (0);
-	j = -1;
-	while (str[++j])
+	i = -1;
+	while (str[++i])
 	{
-		point[j].x = *i;
-		point[j].y = j;
-		if (ft_strchr(str[j], ','))
+		if (ft_strchr(str[i], ','))
 		{
-			point[j].z = ft_atoi(ft_strcdup(str[j], ','));
-			point[j].color = ft_atoi_base(ft_dupcstr(str[j], 'x'), 16);
+			point[i].z = ft_atoi(ft_strcdup(str[i], ','));
+			point[i].color = ft_atoi_base(ft_dupcstr(str[i], 'x'), 16);
 		}
 		else
 		{
-			point[j].z = ft_atoi(ft_strdup(str[j]));
-			point[j].color = 0;
+			point[i].z = ft_atoi(ft_strdup(str[i]));
+			point[i].color = 0xFFFFFF;
 		}
 	}
 	ft_freetab(&str);
 	return (point);
 }
 
-t_point	**pull_map(char *argv, int nb_x, int nb_y)
+t_point	**pull_map(char *argv, int nx, int ny)
 {
 	t_point	**map;
 	int		fd;
 	int		i;
 	char	*line;
 
-	if (!(map = (t_point **)malloc(sizeof(t_point *) * nb_y)))
+	if (!(map = (t_point **)malloc(sizeof(t_point *) * ny)))
 		kill("Error : a memory allocation has failed");
 	fd = open(argv, O_RDONLY);
 	i = 0;
 	while (get_next_line(fd, &line) != 0)
 	{
-		if (!(map[i] = pull_points(line, nb_x, &i)))
+		if (!(map[i] = pull_points(line, nx)))
 		{
 			close(fd);
 			freekill(line, "Error : a memory allocation has failed");

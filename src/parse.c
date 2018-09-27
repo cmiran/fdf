@@ -6,11 +6,11 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 15:57:46 by cmiran            #+#    #+#             */
-/*   Updated: 2018/09/20 11:27:19 by cmiran           ###   ########.fr       */
+/*   Updated: 2018/09/26 21:35:17 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/fdf.h"
+#include "fdf.h"
 
 int		line_len(char *line)
 {
@@ -39,7 +39,6 @@ int	check_line2(char *line, int *i)
 
 	if (line[*i + 1] != '0' && line[*i + 2] != 'x')
 		return (0);
-//		freekill(line, "Error : a color is not well formated");
 	else
 		*i += 3;
 	j = 1;
@@ -47,7 +46,6 @@ int	check_line2(char *line, int *i)
 	{
 		if (!ft_isxdigit(line[*i]) || j > 6 || (line[*i + 1] == ' ' && j % 2 != 0))
 			return (0);
-//			freekill(line, "Error : a color is not well formated");
 		*i += 1;
 		j++;
 	}
@@ -68,15 +66,13 @@ int	check_line1(char *line)
 			break ;
 		if ((line[i] == '-' || line[i] == '+') && !ft_isdigit(line[i + 1]))
 			return (0);
-//			freekill(line, "Error : a point is not well formated");
 		if (line[i] != '-' && line[i] != '+' && line[i] != ' ' && !ft_isdigit(line[i]))
 			return (0);
-//			freekill(line, "Error : map contains a forbidden character");
 	}
 	return (1);
 }
 
-void	check_map(char *argv, t_env *env)
+void	check_map(char *argv, t_env *e)
 {
 	int		fd;
 	char	*line;
@@ -91,24 +87,24 @@ void	check_map(char *argv, t_env *env)
 			freekill(line, "Error : map is not well formated");
 		}
 
-		if (!env->nb_x)
-			env->nb_x = line_len(line);
-		else if (env->nb_x != line_len(line))
+		if (!e->nx)
+			e->nx = line_len(line);
+		else if (e->nx != line_len(line))
 		{
 			close(fd);
 			freekill(line, "Error : map is not a square or a rectangle");
 		}
-		env->nb_y += 1;
+		e->ny += 1;
 	}
 	close(fd);
 	free(line);
 }
 
-t_point	**get_map(char *argv, t_env *env)
+t_point	**get_map(char *argv, t_env *e)
 {
 	t_point	**map;
 
-	check_map(argv, env);
-	map = pull_map(argv, env->nb_x, env->nb_y);
+	check_map(argv, e);
+	map = pull_map(argv, e->nx, e->ny);
 	return (map);
 }
