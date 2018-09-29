@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 18:52:58 by cmiran            #+#    #+#             */
-/*   Updated: 2018/09/29 04:24:02 by cmiran           ###   ########.fr       */
+/*   Updated: 2018/09/29 04:48:21 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,56 +22,36 @@ int	expose_hook(t_env *e)
 	return (0);	
 }
 
-int	key3(int keycode, t_env *e)
+void	key3(int keycode, t_env *e)
 {
-	if (keycode == 13)
-	{
-		if (e->z <= 30.)
-			e->z += 0.2;
-		mlx_clear_window(e->mlx, e->win);
-		expose_hook(e);
-	}
-	if (keycode == 1)
-	{
-		if (e->z >= -30.)
-			e->z -= 0.2;
-		mlx_clear_window(e->mlx, e->win);
-		expose_hook(e);
-	}
-	return (0);
-}
-
-int	key2(int keycode, t_env *e)
-{
-	if (keycode == 126)
-	{
-		e->ymove -= 25;
-		mlx_clear_window(e->mlx, e->win);
-		expose_hook(e);
-	}
 	if (keycode == 40)
 	{
-		if (e->scale <= 95)
-			e->scale += 1;
+		e->scale += 1;
 		mlx_clear_window(e->mlx, e->win);
 		expose_hook(e);
 	}
 	if (keycode == 38)
 	{
-		if (e->scale >= -35)
-			e->scale -= 1;
+		e->scale -= 1;
+		mlx_clear_window(e->mlx, e->win);
+		expose_hook(e);
+	}	
+	if (keycode == 13)
+	{
+		e->z += 0.2;
 		mlx_clear_window(e->mlx, e->win);
 		expose_hook(e);
 	}
-	key3(keycode, e);
-	return (0);	
-	
+	if (keycode == 1)
+	{
+		e->z -= 0.2;
+		mlx_clear_window(e->mlx, e->win);
+		expose_hook(e);
+	}
 }
 
-int	key_hook(int keycode, t_env *e)
+void	key2(int keycode, t_env *e)
 {
-	if (keycode == 53)
-		exit(0);
 	if (keycode == 123)
 	{
 		e->xmove -= 25;
@@ -90,6 +70,20 @@ int	key_hook(int keycode, t_env *e)
 		mlx_clear_window(e->mlx, e->win);
 		expose_hook(e);
 	}
+	
+	if (keycode == 126)
+	{
+		e->ymove -= 25;
+		mlx_clear_window(e->mlx, e->win);
+		expose_hook(e);
+	}
+	key3(keycode, e);		
+}
+
+int	key_hook(int keycode, t_env *e)
+{
+	if (keycode == 53)
+		exit(0);
 	key2(keycode, e);
 	return (0);
 }
