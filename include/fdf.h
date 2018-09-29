@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 15:32:18 by cmiran            #+#    #+#             */
-/*   Updated: 2018/09/27 13:21:44 by cmiran           ###   ########.fr       */
+/*   Updated: 2018/09/29 05:53:29 by cmiran           ###   ########.fr       */
 /*   Updated: 2018/09/19 21:28:28 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -37,10 +37,10 @@ typedef struct	s_env
 	double	z;
 	double	x;
 	double	y;
-	double	x0;
-	double	x1;
-	double	y0;
-	double	y1;
+	int	x0;
+	int	x1;
+	int	y0;
+	int	y1;
 }		t_env;
 
 int		kill(char *str);
