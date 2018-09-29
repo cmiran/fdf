@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 18:52:58 by cmiran            #+#    #+#             */
-/*   Updated: 2018/09/27 13:12:17 by cmiran           ###   ########.fr       */
+/*   Updated: 2018/09/29 04:24:02 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ int	key3(int keycode, t_env *e)
 	if (keycode == 13)
 	{
 		if (e->z <= 30.)
-			e->z += 0.1;
+			e->z += 0.2;
 		mlx_clear_window(e->mlx, e->win);
 		expose_hook(e);
 	}
 	if (keycode == 1)
 	{
 		if (e->z >= -30.)
-			e->z -= 0.1;
+			e->z -= 0.2;
 		mlx_clear_window(e->mlx, e->win);
 		expose_hook(e);
 	}
@@ -45,7 +45,7 @@ int	key2(int keycode, t_env *e)
 {
 	if (keycode == 126)
 	{
-		e->ymove -= 30;
+		e->ymove -= 25;
 		mlx_clear_window(e->mlx, e->win);
 		expose_hook(e);
 	}
@@ -74,19 +74,19 @@ int	key_hook(int keycode, t_env *e)
 		exit(0);
 	if (keycode == 123)
 	{
-		e->xmove -= 30;
+		e->xmove -= 25;
 		mlx_clear_window(e->mlx, e->win);
 		expose_hook(e);
 	}
 	if (keycode == 124)
 	{
-		e->xmove += 30;
+		e->xmove += 25;
 		mlx_clear_window(e->mlx, e->win);
 		expose_hook(e);
 	}
 	if (keycode == 125)
 	{
-		e->ymove += 30;
+		e->ymove += 25;
 		mlx_clear_window(e->mlx, e->win);
 		expose_hook(e);
 	}
