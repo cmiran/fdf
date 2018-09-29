@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/02 14:23:35 by cmiran            #+#    #+#             */
-/*   Updated: 2018/09/27 14:42:46 by cmiran           ###   ########.fr       */
+/*   Updated: 2018/09/28 16:48:01 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	init_env(t_env *e, char *file)
 	e->nx = 0;
 	e->ny = 0;
 	e->map = get_map(file, e);
-	e->z = 5.0;
+	e->z = 1.;
 	e->xmove = 0;
 	e->ymove = 0;
 	if (e->ny >= e->nx)
