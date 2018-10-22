@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 18:52:58 by cmiran            #+#    #+#             */
-/*   Updated: 2018/10/22 16:51:56 by cmiran           ###   ########.fr       */
+/*   Updated: 2018/10/22 20:52:31 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,10 @@ void	key2(int keycode, t_env *e)
 int		key_hook(int keycode, t_env *e)
 {
 	if (keycode == 53)
+	{
+		clear_fdf(e);
 		exit(0);
+	}
 	key2(keycode, e);
 	return (0);
 }

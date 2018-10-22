@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/02 14:23:35 by cmiran            #+#    #+#             */
-/*   Updated: 2018/09/28 16:48:01 by cmiran           ###   ########.fr       */
+/*   Updated: 2018/10/22 21:00:31 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,7 @@ int		main(int argc, char **argv)
 	t_env	e;
 
 	if (argc > 1)
-	{
 		init_env(&e, argv[1]);
-	}
 	else
 		kill("Usage : ./fdf <filename>");
 	exit(EXIT_SUCCESS);

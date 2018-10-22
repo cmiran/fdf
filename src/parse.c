@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 15:57:46 by cmiran            #+#    #+#             */
-/*   Updated: 2018/10/22 17:13:51 by cmiran           ###   ########.fr       */
+/*   Updated: 2018/10/22 20:17:24 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,17 +93,14 @@ void	check_map(char *argv, t_env *e)
 			close(fd);
 			freekill(line, "Error : map must be a square or a rectangle");
 		}
+		free(line);
 		e->ny += 1;
 	}
 	close(fd);
-	free(line);
 }
 
 t_point	**get_map(char *argv, t_env *e)
 {
-	t_point	**map;
-
 	check_map(argv, e);
-	map = pull_map(argv, e->nx, e->ny);
-	return (map);
+	return (pull_map(argv, e->nx, e->ny));
 }
