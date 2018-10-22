@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 15:49:57 by cmiran            #+#    #+#             */
-/*   Updated: 2018/09/29 05:58:13 by cmiran           ###   ########.fr       */
+/*   Updated: 2018/10/22 16:52:12 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	draw_line(int color, t_env *e)
 {
 	double	tx;
-	int	dx;
-	int	dy;
+	int		dx;
+	int		dy;
 
 	tx = 0;
 	dx = e->x1 - e->x0;
@@ -37,7 +37,7 @@ void	vertical(t_env *e, int j, int i)
 	e->x1 = 20 + i * e->scale + (j + 1) * e->scale;
 	e->y0 = (800 + j * e->scale) / 2
 		- (i * e->scale + e->z * e->map[j][i].z) / 2;
-	e->y1 = (800 + (j + 1) * e->scale) /2
+	e->y1 = (800 + (j + 1) * e->scale) / 2
 		- (i * e->scale + e->z * e->map[j + 1][i].z) / 2;
 	draw_line(e->map[j][i].color, e);
 }
@@ -53,7 +53,7 @@ void	horizontal(t_env *e, int j, int i)
 	draw_line(e->map[j][i].color, e);
 }
 
-void		draw_lines(t_env *e)
+void	draw_lines(t_env *e)
 {
 	int	i;
 	int	j;
