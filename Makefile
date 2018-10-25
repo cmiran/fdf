@@ -6,7 +6,7 @@
 #    By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 15:12:11 by cmiran            #+#    #+#              #
-#    Updated: 2018/10/22 17:09:31 by cmiran           ###   ########.fr        #
+#    Updated: 2018/10/25 19:38:36 by cmiran           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,10 @@ obj:
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	$(CC) $(CFLAGS) -o $@ -c $< $(INC)
+
+lldb :
+	make -C ./libft
+	$(CC) $(CFLAGS) $(INC) $(SRC) $(LIB) -o $(NAME) -framework OpenGL -framework AppKit
 
 clean:
 	make clean -C ./libft
