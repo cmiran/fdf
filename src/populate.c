@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/04 16:05:36 by cmiran            #+#    #+#             */
-/*   Updated: 2018/10/22 20:18:08 by cmiran           ###   ########.fr       */
+/*   Updated: 2018/10/25 18:18:59 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,12 @@ t_point	*pull_points(char *line, int nx)
 		}
 		else
 		{
-			point[i].z = ft_atoi(ft_strdup(str[i]));
+			point[i].z = ft_atoi(str[i]);
 			point[i].color = 0xFFFFFF;
 		}
+		free(str[i]);
 	}
-	ft_freetab(&str);
+	free(str);
 	return (point);
 }
 

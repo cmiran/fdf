@@ -6,7 +6,7 @@
 /*   By: cmiran <cmiran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 15:32:18 by cmiran            #+#    #+#             */
-/*   Updated: 2018/10/22 20:52:36 by cmiran           ###   ########.fr       */
+/*   Updated: 2018/10/25 18:40:30 by cmiran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct	s_env
 
 int				kill(char *str);
 void			freekill(char *line, char *str);
-void			clear_fdf(t_env *e);
+void			clear_map(t_point **map, int ny);
 t_point			**get_map(char *argv, t_env *env);
 t_point			**pull_map(char *argv, int nb_x, int nb_y);
 int				expose_hook(t_env *e);
